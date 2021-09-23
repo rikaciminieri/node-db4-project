@@ -3,14 +3,20 @@
 module.exports = {
   development: {
     client: "sqlite3",
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: {
+      directory: "./data/seeds",
+    },
     connection: {
-      filename: "./recipe-book.db3",
+      filename: "./data/recipe-book.db3",
     },
     useNullAsDefault: true,
   },
   pool: {
     afterCreate: (conn, done) => {
-      conn.run("PRAGMA foreign_keys = ON", done); 
+      conn.run("PRAGMA foreign_keys = ON", done);
     },
   },
 };
